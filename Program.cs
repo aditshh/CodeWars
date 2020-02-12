@@ -16,11 +16,22 @@ namespace CodeWars
             Console.WriteLine($"Oddness : {Kata.Test("1 2 2")}");
 
             Console.WriteLine($"Number of Years : {Kata.NbYear(1500000, 0.25, 1000, 2000000)}");
+
+            Console.WriteLine($"Middle Letter : {Kata.GetMiddle("t")}");
             Console.ReadKey();
         }
     }
     public class Kata
     {
+        /// <summary>
+        /// https://www.codewars.com/kata/56747fd5cb988479af000028/train/csharp
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static string GetMiddle(string s)
+        {
+            return s.Length % 2 == 0 ? s.Substring((s.Length / 2) - 1, 2) : s.Substring((s.Length / 2), 1);
+        }
 
         public static string CreatePhoneNumber(int[] numbers)
         {
