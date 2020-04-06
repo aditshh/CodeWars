@@ -23,7 +23,8 @@ namespace CodeWars
             //Kata.Tribonnaci(new double[] { 1, 1, 1 }, 10);
             //Kata.Tribonnaci(new double[] { 0, 0, 1 }, 10);
 
-            Kata.CamelCase("MY Name Is Shawn");
+            //Kata.CamelCase("MY Name Is Shawn");
+            Kata.StripComments("apples, pears # and bananas\ngrapes\nbananas !apples", new[] { "#", "!" });
 
             // Kata.VasyaClerk(new int[] { 25, 25, 50 }); // NO
             // Kata.VasyaClerk(new int[] { 25, 100 }); // NO 
@@ -42,6 +43,29 @@ namespace CodeWars
     }
     public class Kata
     {
+        /// <summary>
+        /// https://www.codewars.com/kata/51c8e37cee245da6b40000bd/csharp
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="spliter"></param>
+        /// <returns></returns>
+        public static string StripComments(string input, string[] spliter)
+        {
+            // "apples, pears # and bananas\ngrapes\nbananas !apples", new [] { "#", "!" }
+            string[] arr = input.Split('\n');
+            for (int i = 0; i < arr.Count(); i++)
+            {
+                foreach (var split in spliter)
+                {
+                    if (arr[i].Contains(split))
+                    {
+                        arr[i] = arr[i].Substring(0, arr[i].IndexOf(split));
+                    }
+                    arr[i] = arr[i].TrimEnd();
+                }
+            }
+            return String.Join("\n",arr);
+        }
 
         /// <summary>
         /// https://www.codewars.com/kata/587731fda577b3d1b0001196/csharp
